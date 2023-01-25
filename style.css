@@ -1,0 +1,55 @@
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5%;
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=183619);
+}
+
+.txtcontainer {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.txtcontainer :nth-child(1) {
+  color: blue;
+  margin-right: 10rem;
+}
+
+.txtcontainer :nth-child(2) {
+  color: red;
+}
+
+table.blueTable {
+  border: 1px solid #1e4763;
+  background-color: #555555;
+  width: 400px;
+  height: 400px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table.blueTable td,
+table.blueTable th {
+  border: 6px solid #1a1a1a;
+}
+
+table.blueTable tbody td {
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+  width: 133.3px;
+  height: 133.3px;
+}
+
+table.blueTable tr:nth-child(even) {
+  background: #5a656e;
+}
+
+.active {
+  background-color: rgba(226, 255, 0, 0.9);
+  border-radius: 5px;
+}

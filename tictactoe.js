@@ -51,18 +51,18 @@ function genListeners() {// generates an event listener for each grid of the boa
 function checkWinner(p, pname) {
     let playername = pname
     if (board[0] == p && board[1] == p && board[2] == p && moves > 1 || board[3] == p && board[4] == p && board[5] == p && moves > 1 || board[6] == p && board[7] == p && board[8] == p && moves > 1) {
-        alert(`${pname} wins!`)
+
         addScore(playername)
     } else if (board[0] == p && board[3] == p && board[6] == p && moves > 1 || board[1] == p && board[4] == p && board[7] == p && moves > 1 || board[2] == p && board[5] == p && board[8] == p && moves > 1) {
-        alert(`${pname} wins!`)
+
         addScore(playername)
         respawn()
     } else if (board[0] == p && board[4] == p && board[8] == p && moves > 1 || board[2] == p && board[4] == p && board[6] == p && moves > 1) {
-        alert(`${pname} wins!`)
+
         addScore(playername)
         respawn()
     } else if (moves == 9) {
-        alert('Its a draw!')
+
         respawn()
     }
 }
@@ -71,11 +71,15 @@ function addScore(player) { // Adds score to the winning player , called from ch
     if (player == 'Player 1') {
         p1score++;
         p1scoretxt.innerHTML = `Score: ${p1score}`
+        celebration('Player 1')
+        setTimeout(respawn, 2000)
     } else if (player == 'Player 2') {
         p2score++;
         p2scoretxt.innerHTML = `Score: ${p2score}`
+        celebration('Player 2')
+        setTimeout(respawn, 2000)
     }
-    respawn()
+
 }
 
 function respawn() { // resets the board to default state and resets the moves counter variable back to 0
@@ -86,6 +90,28 @@ function respawn() { // resets the board to default state and resets the moves c
         element.innerText = ''
     });
     moves = 0;
+}
+
+function celebration(player) {
+    let i = 0;
+    function myLoop() {
+        setTimeout(function () {
+            if (i < 9 && player == 'Player 2') {
+                boxes[i].style.backgroundColor = 'red'
+                boxes[i].innerText = 'O'
+                i++;
+                myLoop();
+            }
+            if (i < 9 && player == 'Player 1') {
+                boxes[i].style.backgroundColor = 'blue'
+                boxes[i].innerText = 'X'
+                i++;
+                myLoop();
+            }
+        }, 200)
+    }
+
+    myLoop();
 }
 
 resetBtn.addEventListener('click', function () { //hard resets the board and score of players
